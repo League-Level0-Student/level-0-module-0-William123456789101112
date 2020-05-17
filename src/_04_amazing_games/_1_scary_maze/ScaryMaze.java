@@ -50,11 +50,12 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		int mouseColor = maze.getRGB(mouseX, mouseY);	
 		
 		//4. Print the mouseColor variable (Hint: use syso)
+		System.out.println(mouseColor);
 		
 		//5.  Run your program and move your mouse over the START COLOR. A number will be printed to the console
 		
 		
-		int startColor=0;
+		int startColor = -7617718;
 		//6. Change the value of this startColor variable to the number printed in the previous step. 
 		
 		
@@ -62,11 +63,12 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		// It makes sure the game will not start until the mouse has visited the start area.
 		if (!started  && mouseColor==startColor) {
 			started = true;
+			JOptionPane.showMessageDialog(null, "Game has started");
 		}
 		
 		
 		//7. Make a new int variable for the background color of the maze
-
+		int backgroundColor = -1499549;
 		
 		//8. Run the program and move the mouse over the BACKGROUND COLOR. 
 		//   Use the number that is printed to the console to set the background color variable 
@@ -78,10 +80,19 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		
 			//9. If the mouse falls off the path (which means it is on the background color)
 			//		call the scare method - scare();
+			if (mouseColor == backgroundColor)
+			{
+				scare();
+				JOptionPane.showMessageDialog(null, "You have falled off the track!");
+			}
 			
 			//13.  If the mouse is on the end color, pop up a message to tell them they won!
 			//    (you will need to get the number of the END COLOR by moving the mouse over it)
-
+			int endColor = -5317;
+			if (mouseColor == endColor)
+			{
+				JOptionPane.showMessageDialog(null, "You won!");
+			}
 					
 			
 		}	
@@ -102,7 +113,8 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		//10. Find a scary sound and put it in the section5 package where you put your maze picture. 
 		//    You can find a sound on freesound.org. Log in as leagueofamazing/code4life.
 		
-		//11. Play the scary sound. Hint: use the playScarySound method with the name of your sound file		
+		//11. Play the scary sound. Hint: use the playScarySound method with the name of your sound file
+		playScarySound("standardScarySound.wav");
 		
 		/**********  SHOW A PICTURE ***************/
 
