@@ -29,6 +29,8 @@ public class DragonFight {
 			// to 0 for now.
 		int dragoonattack = 0;
 		
+		int attackNum = 0;
+		
 		//  This while statement will cause the game to repeat until the player or dragon run out of health
 		while (true) {
 
@@ -52,12 +54,12 @@ public class DragonFight {
 					// -- Subtract the player attack value from the dragon's health
 				if (attack.equals("yell"))
 				{
-					int attackNum = ran.nextInt(10);
+					attackNum = ran.nextInt(10);
 					dragonHealth -= attackNum;
 				}
 				if (attack.equals("kick"))
 				{
-					int attackNum = ran.nextInt(25);
+					attackNum = ran.nextInt(25);
 					dragonHealth -= attackNum;
 				}
 
@@ -73,9 +75,13 @@ public class DragonFight {
 
 				// 8. If the player's health is less than or equal to 0
 				// call the playerLost() method
-				if (playerHealth == 0)
+				if (playerHealth <= 0)
 				{
 					playerLost();
+				}
+				else if(dragonHealth <= 0)
+				{
+					dragonLost();
 				}
 				
 			
@@ -85,10 +91,12 @@ public class DragonFight {
 			
 			// 10.  Pop up a message that tells the player the health levels of player and
 			// 		dragon.
+				JOptionPane.showMessageDialog(null, ("Player Health: " + playerHealth + " Dragon Health: " + dragonHealth));
 
 			
 			// (Bonus: Also display the amount of health that was lost by each in this
 			// round)
+				JOptionPane.showMessageDialog(null, "Player lost " + attackNum + " health. Dragon lost " + dragonAttackNum + " health");
 
 		}
 
@@ -96,14 +104,14 @@ public class DragonFight {
 
 	static void playerLost() {
 		// 11. Tell the player that they have been defeated by the dragon and have no treasure
-
+				JOptionPane.showMessageDialog(null, "You have been defeated by the dragon and have no treasure");
 
 		System.exit(0);   //This code ends the program
 	}
 
 	static void dragonLost() {
 		// 12. Tell the user that the dragon has been defeated and they get a ton of gold!
-
+				JOptionPane.showMessageDialog(null, "The dragon has been defeated and they get a ton of gold!");
 		System.exit(0);   //This code ends the program
 	}
 
